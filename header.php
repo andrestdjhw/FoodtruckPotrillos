@@ -8,6 +8,7 @@
   <body <?php body_class(); ?>>
 
     <div id="navbar-root"></div>
+    <div id="floating-cta-root"></div>
 
     <!-- Spacer para compensar el header fixed -->
     <div class="h-28"></div>

@@ -995,6 +995,100 @@ function ExampleReactComponent() {
 
 /***/ },
 
+/***/ "./src/scripts/FloatingCTA.js"
+/*!************************************!*\
+  !*** ./src/scripts/FloatingCTA.js ***!
+  \************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/";
+function FloatingCTA() {
+  const [visible, setVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [dismissed, setDismissed] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+
+  // Show after 3 seconds, hide if user dismissed this session
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (dismissed) return;
+    const timer = setTimeout(() => setVisible(true), 3000);
+    return () => clearTimeout(timer);
+  }, [dismissed]);
+
+  // Also hide when user scrolls back to top (near hero)
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const onScroll = () => {
+      if (window.scrollY < 100) setVisible(false);else if (!dismissed) setVisible(true);
+    };
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [dismissed]);
+  if (dismissed) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    style: {
+      zIndex: 1200
+    },
+    className: `fixed bottom-6 left-1/2 -translate-x-1/2 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"}`,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "flex items-center gap-3 bg-[#1a1a1a] text-white rounded-full shadow-2xl pl-2 pr-2 py-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png",
+          alt: "Los Potrillos",
+          className: "w-7 h-7 object-contain"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "pr-1",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "text-xs font-black leading-tight whitespace-nowrap",
+          children: "Los Potrillos Food Truck"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "text-xs text-gray-400 leading-tight whitespace-nowrap",
+          children: "Order online. Pick up in minutes."
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        href: POS_URL,
+        className: "bg-[#c0392b] hover:bg-[#a93226] text-white font-black text-xs px-4 py-2.5 rounded-full transition-colors whitespace-nowrap shrink-0",
+        children: "Order Now"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        onClick: () => {
+          setDismissed(true);
+          setVisible(false);
+        },
+        "aria-label": "Dismiss",
+        className: "w-6 h-6 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-gray-700 transition-colors shrink-0 mr-1",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          className: "w-3.5 h-3.5",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2.5",
+          viewBox: "0 0 24 24",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M6 18L18 6M6 6l12 12"
+          })
+        })
+      })]
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingCTA);
+
+/***/ },
+
 /***/ "./src/scripts/Footer.js"
 /*!*******************************!*\
   !*** ./src/scripts/Footer.js ***!
@@ -3714,8 +3808,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/Navbar */ "./src/scripts/Navbar.js");
 /* harmony import */ var _scripts_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/Footer */ "./src/scripts/Footer.js");
 /* harmony import */ var _scripts_ContactForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scripts/ContactForm */ "./src/scripts/ContactForm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _scripts_FloatingCTA__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./scripts/FloatingCTA */ "./src/scripts/FloatingCTA.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -3727,23 +3823,27 @@ __webpack_require__.r(__webpack_exports__);
 const person1 = new _scripts_Person__WEBPACK_IMPORTED_MODULE_2__["default"]("Brad");
 if (document.querySelector("#render-react-example-here")) {
   const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#render-react-example-here"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_ExampleReactComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_ExampleReactComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
 }
 if (document.querySelector("#navbar-root")) {
   const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#navbar-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {}));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {}));
 }
 if (document.querySelector("#footer-root")) {
   const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#footer-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], {}));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], {}));
 }
 if (document.querySelector("#reservation-form-root")) {
   const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#reservation-form-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_6__["default"], {}));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_6__["default"], {}));
 }
 if (document.querySelector("#contact-form-root")) {
   const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#contact-form-root"));
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_6__["default"], {}));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_6__["default"], {}));
+}
+if (document.querySelector("#floating-cta-root")) {
+  const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1___default().createRoot(document.querySelector("#floating-cta-root"));
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_FloatingCTA__WEBPACK_IMPORTED_MODULE_7__["default"], {}));
 }
 })();
 

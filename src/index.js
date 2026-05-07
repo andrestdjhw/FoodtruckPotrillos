@@ -5,6 +5,7 @@ import ExampleReactComponent from "./scripts/ExampleReactComponent"
 import Navbar from "./scripts/Navbar"
 import Footer from "./scripts/Footer"
 import ContactForm from "./scripts/ContactForm"
+import FloatingCTA from "./scripts/FloatingCTA"
 
 const person1 = new Person("Brad")
 
@@ -31,4 +32,10 @@ if (document.querySelector("#reservation-form-root")) {
 if (document.querySelector("#contact-form-root")) {
   const root = ReactDOM.createRoot(document.querySelector("#contact-form-root"))
   root.render(<ContactForm />)
+}
+
+
+if (document.querySelector("#floating-cta-root")) {
+  const root = ReactDOM.createRoot(document.querySelector("#floating-cta-root"))
+  root.render(<FloatingCTA />)
 }
