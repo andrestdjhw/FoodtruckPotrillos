@@ -627,10 +627,10 @@ __webpack_require__.r(__webpack_exports__);
 
 // ─── CONFIGURACIÓN — reemplazar con los datos reales ─────────────────────────
 
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY";
+const EMAILJS_SERVICE_ID = "service_xq04hfa";
+const EMAILJS_TEMPLATE_ID = "template_d208wk8";
+const EMAILJS_PUBLIC_KEY = "Et9iu2dz4an-CfbAk";
+const RECAPTCHA_SITE_KEY = "6Lcext4sAAAAAFZJDqBEwDoOYfeo6oCUbP9x2NAC";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const EVENT_TYPES = ["Quinceañera", "Wedding", "Birthday", "Corporate", "Festival", "Community", "Other"];

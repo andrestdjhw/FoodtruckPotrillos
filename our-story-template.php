@@ -75,6 +75,14 @@ get_header(); ?>
             What started as a dream became a restaurant at 2617 E Venango Street in
             Port Richmond — and then grew into something more.
           </p>
+          <a
+            href="https://restaurantpotrillos.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold text-[#c0392b] hover:underline"
+            >
+            Visit our restaurant in Port Richmond →
+         </a>
         </div>
       </div>
 
@@ -270,30 +278,5 @@ get_header(); ?>
   </div>
 </section>
 
-
-<!-- ══════════════════════════════════════════════
-     FINAL CTA
-════════════════════════════════════════════════ -->
-<section class="bg-[#c0392b] py-16 px-4">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl sm:text-4xl font-black text-white mb-8 leading-tight">
-      Come Taste the Story for Yourself.
-    </h2>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a
-        href="https://los-potrillos-food-truck.cloveronline.com/"
-        class="w-full sm:w-auto bg-white text-[#c0392b] font-black text-sm px-8 py-3.5 rounded-full hover:bg-gray-100 transition-colors shadow-md"
-      >
-        ORDER NOW →
-      </a>
-      <a
-        href="/contact"
-        class="w-full sm:w-auto border-2 border-white text-white font-black text-sm px-8 py-3.5 rounded-full hover:bg-white hover:text-[#c0392b] transition-colors"
-      >
-        RESERVE THE TRUCK →
-      </a>
-    </div>
-  </div>
-</section>
 
 <?php get_footer(); ?>

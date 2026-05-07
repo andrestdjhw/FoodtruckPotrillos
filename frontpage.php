@@ -57,6 +57,61 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════
+     4.5 — TRUST BLOCK
+════════════════════════════════════════════════ -->
+<section class="bg-white py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- <h2 class="text-3xl sm:text-4xl font-black text-gray-900 text-center mb-12">
+      Real Food. Real Fast. Real Recipes.
+    </h2> -->
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Puebla Recipe</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">The same family recipe served at our restaurant — passed down through generations.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Fresh Daily</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Ingredients prepped every morning. Nothing pre-packaged. Nothing reheated.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Fast Service</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Order at the POS, pick up at the window. Real food, ready in minutes.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Family-Owned</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Two brothers. One recipe. The same family that runs the restaurant.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════════
      4.3 — THE TWO PILLARS
@@ -163,67 +218,13 @@
 </section>
 
 
-<!-- ══════════════════════════════════════════════
-     4.5 — TRUST BLOCK
-════════════════════════════════════════════════ -->
-<section class="bg-white py-16 lg:py-20">
-  <div class="max-w-7xl mx-auto px-4">
 
-    <h2 class="text-3xl sm:text-4xl font-black text-gray-900 text-center mb-12">
-      Real Food. Real Fast. Real Recipes.
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      <div class="flex flex-col items-center text-center gap-3">
-        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
-          </svg>
-        </div>
-        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Puebla Recipe</h3>
-        <p class="text-sm text-gray-500 leading-relaxed">The same family recipe served at our restaurant — passed down through generations.</p>
-      </div>
-
-      <div class="flex flex-col items-center text-center gap-3">
-        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
-          </svg>
-        </div>
-        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Fresh Daily</h3>
-        <p class="text-sm text-gray-500 leading-relaxed">Ingredients prepped every morning. Nothing pre-packaged. Nothing reheated.</p>
-      </div>
-
-      <div class="flex flex-col items-center text-center gap-3">
-        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-          </svg>
-        </div>
-        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Fast Service</h3>
-        <p class="text-sm text-gray-500 leading-relaxed">Order at the POS, pick up at the window. Real food, ready in minutes.</p>
-      </div>
-
-      <div class="flex flex-col items-center text-center gap-3">
-        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-[#c0392b]">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-sm font-black tracking-widest text-gray-900 uppercase">Family-Owned</h3>
-        <p class="text-sm text-gray-500 leading-relaxed">Two brothers. One recipe. The same family that runs the restaurant.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- ══════════════════════════════════════════════
      4.6 — FAMILY STORY
 ════════════════════════════════════════════════ -->
-<section class="bg-stone-50 py-16 lg:py-24">
+<!-- <section class="bg-stone-50 py-16 lg:py-24">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
@@ -272,7 +273,7 @@
 
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ══════════════════════════════════════════════
      4.8 — REVIEWS
