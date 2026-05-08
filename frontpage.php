@@ -5,12 +5,13 @@
 ════════════════════════════════════════════════ -->
 <section class="relative min-h-[90vh] flex items-center bg-[#0f0f0f] overflow-hidden">
 
-  <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 z-0">
-    <img
-      src=""
-      alt="Los Potrillos Food Truck"
-      class="w-full h-full object-cover object-center"
-    />
+  <div style="position:absolute; top:0; right:0; height:90vh; width:50%; z-index:0; overflow:hidden;">
+    <video
+      src="/wp-content/uploads/2026/05/HeroVideo1.mp4"
+      autoplay muted loop playsinline
+      style="width:100%; height:100%; object-fit:cover; display:block;"
+    ></video>
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.5);"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-[#0f0f0f]/80 to-transparent hidden lg:block"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 to-transparent lg:hidden"></div>
   </div>
@@ -216,9 +217,6 @@
     </div>
   </div>
 </section>
-
-
-
 
 
 <!-- ══════════════════════════════════════════════
