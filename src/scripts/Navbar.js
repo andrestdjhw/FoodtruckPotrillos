@@ -19,17 +19,16 @@ function Navbar() {
   }, [])
 
   const navLinks = [
-    { label: "Home",              href: "/"          },
-    { label: "Menu",              href: POS_URL      },
-    { label: "Our Story",         href: "/our-story" },
-    { label: "Contact",           href: "/contact"   },
+    { label: "Home",      href: "/"          },
+    { label: "Menu",      href: POS_URL      },
+    { label: "Our Story", href: "/our-story" },
+    { label: "Contact",   href: "/contact"   },
   ]
 
   const handleReserve = (e) => {
     e.preventDefault()
     setMenuOpen(false)
-    const target = document.querySelector("#reserve")
-    if (target) target.scrollIntoView({ behavior: "smooth" })
+    window.location.href = "/contact"
   }
 
   return (
@@ -39,7 +38,7 @@ function Navbar() {
       <div className={`bg-[#1a1a1a] text-gray-300 text-xs transition-all duration-300 overflow-hidden ${isScrolled ? "max-h-0 py-0" : "max-h-12 py-2"}`}>
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center">
 
-          {/* LEFT — Phone + Hours */}
+          {/* LEFT — Phone + Email */}
           <div className="flex items-center gap-4">
             <a href="tel:+12675966092" className="flex items-center gap-1.5 hover:text-[#e8a020] transition-colors">
               <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -47,17 +46,16 @@ function Navbar() {
               </svg>
               (267) 596-6092
             </a>
-            <span className="flex items-center gap-1.5">
+            <a href="mailto:info@restaurantpotrillos.com" className="flex items-center gap-1.5 hover:text-[#e8a020] transition-colors">
               <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <path strokeLinecap="round" d="M12 6v6l4 2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
-              Mon–Sat 10am – 9pm
-            </span>
+              info@restaurantpotrillos.com
+            </a>
           </div>
 
-          {/* CENTER — Address */}
-          <div className="flex justify-center">
+          {/* CENTER — Address + Hours */}
+          <div className="flex justify-center items-center gap-4">
             <a
               href="https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA"
               target="_blank"
@@ -70,6 +68,13 @@ function Navbar() {
               </svg>
               4200 G St, Philadelphia, PA
             </a>
+            <span className="flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path strokeLinecap="round" d="M12 6v6l4 2" />
+              </svg>
+              Mon–Sat 10am – 9pm
+            </span>
           </div>
 
           {/* RIGHT — Social Icons */}
@@ -136,24 +141,13 @@ function Navbar() {
 
           {/* DESKTOP NAV LINKS */}
           <ul className="hidden lg:flex items-center gap-1 text-sm font-semibold text-gray-700">
-            {navLinks.map(({ label, href }) => {
-              if (label === "Reserve the Truck") {
-                return (
-                  <li key={label}>
-                    <a href={href} onClick={handleReserve} className="px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
-                      {label}
-                    </a>
-                  </li>
-                )
-              }
-              return (
-                <li key={label}>
-                  <a href={href} className="px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
-                    {label}
-                  </a>
-                </li>
-              )
-            })}
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <a href={href} className="px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
 
           {/* DESKTOP CTAs */}
@@ -161,7 +155,7 @@ function Navbar() {
             <a href={POS_URL} className="bg-[#c0392b] hover:bg-[#a93226] text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-sm">
               ORDER NOW
             </a>
-            <a href="#reserve" onClick={handleReserve} className="border-2 border-[#c0392b] text-[#c0392b] hover:bg-[#c0392b] hover:text-white text-sm font-bold px-5 py-2 rounded-full transition-colors">
+            <a href="/contact" onClick={handleReserve} className="border-2 border-[#c0392b] text-[#c0392b] hover:bg-[#c0392b] hover:text-white text-sm font-bold px-5 py-2 rounded-full transition-colors">
               RESERVE THE TRUCK
             </a>
           </div>
@@ -171,7 +165,7 @@ function Navbar() {
             <a href={POS_URL} className="bg-[#c0392b] hover:bg-[#a93226] text-white text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap">
               ORDER NOW
             </a>
-            <a href="#reserve" onClick={handleReserve} className="border-2 border-[#c0392b] text-[#c0392b] text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap hidden sm:inline-flex">
+            <a href="/contact" onClick={handleReserve} className="border-2 border-[#c0392b] text-[#c0392b] text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap hidden sm:inline-flex">
               RESERVE
             </a>
             <button
@@ -194,26 +188,15 @@ function Navbar() {
         {/* MOBILE DROPDOWN */}
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-96 border-t border-gray-100" : "max-h-0"}`}>
           <ul className="flex flex-col px-4 py-3 gap-1 text-sm font-semibold text-gray-700 bg-white">
-            {navLinks.map(({ label, href }) => {
-              if (label === "Reserve the Truck") {
-                return (
-                  <li key={label}>
-                    <a href={href} onClick={handleReserve} className="block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
-                      {label}
-                    </a>
-                  </li>
-                )
-              }
-              return (
-                <li key={label}>
-                  <a href={href} onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
-                    {label}
-                  </a>
-                </li>
-              )
-            })}
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <a href={href} onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors">
+                  {label}
+                </a>
+              </li>
+            ))}
             <li className="sm:hidden pt-1">
-              <a href="#reserve" onClick={handleReserve} className="flex justify-center border-2 border-[#c0392b] text-[#c0392b] font-bold px-4 py-2 rounded-full transition-colors">
+              <a href="/contact" onClick={handleReserve} className="flex justify-center border-2 border-[#c0392b] text-[#c0392b] font-bold px-4 py-2 rounded-full transition-colors">
                 RESERVE THE TRUCK
               </a>
             </li>

@@ -1,7 +1,7 @@
 import React from "react"
 
 const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/"
-const RESTAURANT_URL = "https://restaurantpotrillos.com/"
+const RESTAURANT_URL = "https://restaurant.restaurantpotrillos.com/"
 
 function Footer() {
   const handleReserve = (e) => {
@@ -70,7 +70,7 @@ function Footer() {
               ORDER NOW →
             </a>
             <a
-              href="#reserve"
+              href="/contact"
               onClick={handleReserve}
               className="w-full sm:w-auto bg-transparent border-2 border-white text-white font-black text-sm px-8 py-3.5 rounded-full hover:bg-white hover:text-[#c0392b] transition-colors"
             >

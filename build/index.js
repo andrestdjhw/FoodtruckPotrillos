@@ -1107,7 +1107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/";
-const RESTAURANT_URL = "https://restaurantpotrillos.com/";
+const RESTAURANT_URL = "https://restaurant.restaurantpotrillos.com/";
 function Footer() {
   const handleReserve = e => {
     e.preventDefault();
@@ -1167,7 +1167,7 @@ function Footer() {
             className: "w-full sm:w-auto bg-white text-[#c0392b] font-black text-sm px-8 py-3.5 rounded-full hover:bg-gray-100 transition-colors shadow-md",
             children: "ORDER NOW \u2192"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "#reserve",
+            href: "/contact",
             onClick: handleReserve,
             className: "w-full sm:w-auto bg-transparent border-2 border-white text-white font-black text-sm px-8 py-3.5 rounded-full hover:bg-white hover:text-[#c0392b] transition-colors",
             children: "RESERVE THE TRUCK \u2192"
@@ -1426,10 +1426,7 @@ function Navbar() {
   const handleReserve = e => {
     e.preventDefault();
     setMenuOpen(false);
-    const target = document.querySelector("#reserve");
-    if (target) target.scrollIntoView({
-      behavior: "smooth"
-    });
+    window.location.href = "/contact";
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("header", {
     style: {
@@ -1457,27 +1454,25 @@ function Navbar() {
                 d: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
               })
             }), "(267) 596-6092"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "flex items-center gap-1.5",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+            href: "mailto:info@restaurantpotrillos.com",
+            className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
               className: "w-3.5 h-3.5 shrink-0",
               fill: "none",
               stroke: "currentColor",
               strokeWidth: "2",
               viewBox: "0 0 24 24",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-                cx: "12",
-                cy: "12",
-                r: "10"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
                 strokeLinecap: "round",
-                d: "M12 6v6l4 2"
-              })]
-            }), "Mon\u2013Sat 10am \u2013 9pm"]
+                strokeLinejoin: "round",
+                d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              })
+            }), "info@restaurantpotrillos.com"]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "flex justify-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex justify-center items-center gap-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
             href: "https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA",
             target: "_blank",
             rel: "noopener noreferrer",
@@ -1498,7 +1493,24 @@ function Navbar() {
                 d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               })]
             }), "4200 G St, Philadelphia, PA"]
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "flex items-center gap-1.5",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+              className: "w-3.5 h-3.5 shrink-0",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              viewBox: "0 0 24 24",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                cx: "12",
+                cy: "12",
+                r: "10"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                strokeLinecap: "round",
+                d: "M12 6v6l4 2"
+              })]
+            }), "Mon\u2013Sat 10am \u2013 9pm"]
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "flex items-center justify-end gap-3",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -1601,25 +1613,13 @@ function Navbar() {
           children: navLinks.map(({
             label,
             href
-          }) => {
-            if (label === "Reserve the Truck") {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                  href: href,
-                  onClick: handleReserve,
-                  className: "px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
-                  children: label
-                })
-              }, label);
-            }
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: href,
-                className: "px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
-                children: label
-              })
-            }, label);
-          })
+          }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: href,
+              className: "px-3 py-2 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
+              children: label
+            })
+          }, label))
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "hidden lg:flex items-center gap-2 shrink-0",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -1627,7 +1627,7 @@ function Navbar() {
             className: "bg-[#c0392b] hover:bg-[#a93226] text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-sm",
             children: "ORDER NOW"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "#reserve",
+            href: "/contact",
             onClick: handleReserve,
             className: "border-2 border-[#c0392b] text-[#c0392b] hover:bg-[#c0392b] hover:text-white text-sm font-bold px-5 py-2 rounded-full transition-colors",
             children: "RESERVE THE TRUCK"
@@ -1639,7 +1639,7 @@ function Navbar() {
             className: "bg-[#c0392b] hover:bg-[#a93226] text-white text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap",
             children: "ORDER NOW"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "#reserve",
+            href: "/contact",
             onClick: handleReserve,
             className: "border-2 border-[#c0392b] text-[#c0392b] text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap hidden sm:inline-flex",
             children: "RESERVE"
@@ -1673,29 +1673,17 @@ function Navbar() {
           children: [navLinks.map(({
             label,
             href
-          }) => {
-            if (label === "Reserve the Truck") {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                  href: href,
-                  onClick: handleReserve,
-                  className: "block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
-                  children: label
-                })
-              }, label);
-            }
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: href,
-                onClick: () => setMenuOpen(false),
-                className: "block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
-                children: label
-              })
-            }, label);
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+          }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: href,
+              onClick: () => setMenuOpen(false),
+              className: "block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
+              children: label
+            })
+          }, label)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
             className: "sm:hidden pt-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: "#reserve",
+              href: "/contact",
               onClick: handleReserve,
               className: "flex justify-center border-2 border-[#c0392b] text-[#c0392b] font-bold px-4 py-2 rounded-full transition-colors",
               children: "RESERVE THE TRUCK"
