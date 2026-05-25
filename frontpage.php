@@ -31,7 +31,7 @@
 
       <p class="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed">
         Same family recipe as our Port Richmond restaurant — now on the streets.
-        Order at the truck in minutes, or reserve us for your next private event.
+        Order at the truck in minutes, or stop by and see us at 4200 G Street.
       </p>
 
       <div class="flex items-center gap-2 mb-6">
@@ -47,10 +47,10 @@
           ORDER NOW →
         </a>
         <a
-          href="#reserve"
-          class="js-scroll-reserve border-2 border-white text-white hover:bg-white hover:text-[#0f0f0f] font-black text-sm px-8 py-3.5 rounded-full transition-colors text-center"
+          href="/contact"
+          class="border-2 border-white text-white hover:bg-white hover:text-[#0f0f0f] font-black text-sm px-8 py-3.5 rounded-full transition-colors text-center"
         >
-          RESERVE THE TRUCK
+          GET IN TOUCH
         </a>
       </div>
 
@@ -63,10 +63,6 @@
 ════════════════════════════════════════════════ -->
 <section class="bg-white py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4">
-
-    <!-- <h2 class="text-3xl sm:text-4xl font-black text-gray-900 text-center mb-12">
-      Real Food. Real Fast. Real Recipes.
-    </h2> -->
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -119,6 +115,7 @@
 ════════════════════════════════════════════════ -->
 <section class="flex flex-col lg:flex-row">
 
+  <!-- Card 1 — Order Now -->
   <div class="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px] overflow-hidden group cursor-pointer">
     <img
       src="/wp-content/uploads/2026/05/OrderPickupHero-e1778174639866.jpg"
@@ -141,24 +138,27 @@
     </div>
   </div>
 
+  <!-- Card 2 — Find Us -->
   <div class="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px] overflow-hidden group cursor-pointer">
     <img
       src="/wp-content/uploads/2026/05/FoodTruck-scaled-1.jpg"
-      alt="Los Potrillos Food Truck at an event"
+      alt="Los Potrillos Food Truck at G Street"
       class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute inset-0 flex flex-col justify-center px-8 lg:px-12">
-      <h2 class="text-4xl lg:text-5xl font-black text-white mb-3">RESERVE<br />THE TRUCK</h2>
+      <h2 class="text-4xl lg:text-5xl font-black text-white mb-3">COME<br />FIND US</h2>
       <p class="text-sm text-gray-200 mb-6 leading-relaxed max-w-xs">
-        Bring real Mexican street food to your event.<br />
-        Quinceañeras, weddings, festivals, and more.
+        We're at 4200 G Street, Philadelphia.<br />
+        Monday through Saturday, 10am to 9pm.
       </p>
       <a
-        href="/contact"
-        class="js-scroll-reserve inline-block bg-white hover:bg-gray-100 text-[#111111] font-black text-sm px-7 py-3 rounded-full transition-colors w-fit shadow-lg"
+        href="https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA+19124"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white hover:bg-gray-100 text-[#111111] font-black text-sm px-7 py-3 rounded-full transition-colors w-fit shadow-lg"
       >
-        REQUEST AVAILABILITY
+        GET DIRECTIONS
       </a>
     </div>
   </div>
@@ -222,56 +222,7 @@
 <!-- ══════════════════════════════════════════════
      4.6 — FAMILY STORY
 ════════════════════════════════════════════════ -->
-<!-- <section class="bg-stone-50 py-16 lg:py-24">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-
-      <div class="w-full lg:w-1/2 shrink-0">
-        <div class="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-          <img
-            src="/wp-content/uploads/2026/05/PotrillosFamilyAtRestaurant.jpg"
-            alt="The Los Potrillos family at the restaurant"
-            class="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div class="w-full lg:w-1/2">
-        <p class="text-xs font-bold tracking-widest text-[#c0392b] uppercase mb-3">
-          The Family Behind the Truck
-        </p>
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-6 leading-tight">
-          From Our Kitchen in Port Richmond to Our Truck on G Street
-        </h2>
-        <div class="text-gray-600 text-sm leading-relaxed space-y-4 mb-8">
-          <p>
-            Los Potrillos was started by two brothers who grew up cooking in their family's kitchen
-            in Puebla, Mexico. The recipes — including the birria that put us on the map —
-            came from their mother and her mother before her.
-          </p>
-          <p>
-            What started in our restaurant at 2617 E Venango Street has grown into something more.
-            The food truck at 4200 G St brings the same recipes, the same ingredients, and the
-            same care to the streets of Philadelphia — faster, simpler, and just as real.
-          </p>
-          <p>
-            We are not a chain. We are not a concept. We are a family-run kitchen —
-            now with two ways to feed you.
-          </p>
-        </div>
-        <a
-          href="https://restaurantpotrillos.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-semibold text-[#c0392b] hover:underline"
-        >
-          Visit our restaurant in Port Richmond →
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section> -->
+<!-- <section class="bg-stone-50 py-16 lg:py-24"> ... </section> -->
 
 <!-- ══════════════════════════════════════════════
      4.8 — REVIEWS
@@ -281,55 +232,82 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     4.7 — RESERVE THE TRUCK
+     CONTACT SECTION
 ════════════════════════════════════════════════ -->
-<section id="reserve" class="bg-[#0f0f0f] py-16 lg:py-24">
+<section id="contact" class="bg-[#0f0f0f] py-16 lg:py-24">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
 
+      <!-- Left: Info -->
       <div class="w-full lg:w-5/12">
         <p class="text-xs font-bold tracking-widest text-[#e8a020] uppercase mb-3">
-          Reserve the Truck — For Events That Matter
+          Get in Touch
         </p>
         <h2 class="text-3xl sm:text-4xl font-black text-white mb-4 leading-tight">
-          Bring the Los Potrillos Truck to Your Quinceañera, Wedding, or Festival
+          Have a Question? We'd Love to Hear from You.
         </h2>
         <p class="text-sm text-gray-400 leading-relaxed mb-8">
-          Real Mexican street food, served from our truck, at your event. Custom menus.
-          Generous portions. Memorable for your guests. Available across Philadelphia
-          and the surrounding counties.
+          Whether you have a question about our menu, our location, or anything else —
+          we're here to help. Fill out the form and we'll get back to you within 24 hours.
         </p>
-        <div class="flex flex-col gap-3">
-          <div class="border border-gray-700 rounded-xl px-5 py-4">
-            <h3 class="text-xs font-black tracking-widest text-white uppercase mb-1">Family Celebrations</h3>
-            <p class="text-xs text-gray-500">Quinceañeras · Weddings · Birthdays · Graduations</p>
-          </div>
-          <div class="border border-gray-700 rounded-xl px-5 py-4">
-            <h3 class="text-xs font-black tracking-widest text-white uppercase mb-1">Private &amp; Corporate Events</h3>
-            <p class="text-xs text-gray-500">Office Parties · Team Events · Holiday Gatherings</p>
-          </div>
-          <div class="border border-gray-700 rounded-xl px-5 py-4">
-            <h3 class="text-xs font-black tracking-widest text-white uppercase mb-1">Festivals &amp; Community</h3>
-            <p class="text-xs text-gray-500">Block Parties · Festivals · School Events · Church Gatherings</p>
-          </div>
-        </div>
+
+        <ul class="flex flex-col gap-5">
+          <li class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 text-[#e8a020]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-0.5">Phone</p>
+              <a href="tel:+12675966092" class="text-sm text-white hover:text-[#e8a020] transition-colors">(267) 596-6092</a>
+            </div>
+          </li>
+          <li class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 text-[#e8a020]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-0.5">Email</p>
+              <a href="mailto:info@restaurantpotrillos.com" class="text-sm text-white hover:text-[#e8a020] transition-colors">info@restaurantpotrillos.com</a>
+            </div>
+          </li>
+          <li class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 text-[#e8a020]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-0.5">Location</p>
+              <a href="https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA+19124" target="_blank" rel="noopener noreferrer" class="text-sm text-white hover:text-[#e8a020] transition-colors">4200 G St, Philadelphia, PA 19124</a>
+              <p class="text-xs text-gray-500 mt-0.5">Mon–Sat: 10am – 9pm · Sunday: Closed</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center shrink-0 text-green-400">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.855L0 24l6.293-1.494A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.001-1.374l-.359-.213-3.72.883.934-3.613-.234-.372A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-0.5">WhatsApp</p>
+              <a href="https://wa.me/12675966092" target="_blank" rel="noopener noreferrer" class="text-sm text-white hover:text-green-400 transition-colors">Message us directly →</a>
+            </div>
+          </li>
+        </ul>
       </div>
 
+      <!-- Right: Form -->
       <div class="w-full lg:w-7/12">
         <div class="bg-white rounded-2xl shadow-2xl p-8">
-          <h3 class="text-xl font-black text-gray-900 mb-6">Check Truck Availability for Your Event</h3>
+          <h3 class="text-xl font-black text-gray-900 mb-1">Send Us a Message</h3>
+          <p class="text-xs text-gray-400 mb-6">We'll get back to you within 24 hours.</p>
           <div id="reservation-form-root"></div>
-          <p class="text-xs text-gray-400 text-center mt-4">We respond within 24 hours. No spam. No obligation.</p>
-          <div class="text-center mt-3">
-            <a
-              href="https://wa.me/12675966092"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xs font-semibold text-[#c0392b] hover:underline"
-            >
-              Prefer WhatsApp? → Message us at (267) 596-6092
-            </a>
-          </div>
         </div>
       </div>
 
@@ -408,7 +386,7 @@
         </div>
         <p class="text-xs text-gray-500 leading-relaxed">
           Easy street parking. Walk-up window service. Cash and card accepted.
-          No reservations needed for daily orders — just stop by or order ahead online.
+          No reservations needed — just stop by or order ahead online.
         </p>
       </div>
 
@@ -432,9 +410,8 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"How do I order from the truck?","acceptedAnswer":{"@type":"Answer","text":"Easy. Click Order Now anywhere on this page to order through our online system, then pick up at the truck window. You can also walk up and order in person — but ordering ahead online means your food is ready faster. We accept cash and card."}},
+        {"@type":"Question","name":"How do I order from the truck?","acceptedAnswer":{"@type":"Answer","text":"Easy. Click Order Now anywhere on this page to order through our online system, then pick up at the truck window. You can also walk up and order in person. We accept cash and card."}},
         {"@type":"Question","name":"What makes your birria tacos different?","acceptedAnswer":{"@type":"Answer","text":"Our birria is slow-cooked for 12 hours using a family recipe from Puebla, Mexico — the same recipe served at our Port Richmond restaurant. The tortillas are dipped in the consomé and crisped on the plancha. Nothing is pre-packaged. Nothing is rushed."}},
-        {"@type":"Question","name":"Can I reserve the truck for my private event?","acceptedAnswer":{"@type":"Answer","text":"Yes. We bring the truck to quinceañeras, weddings, birthdays, corporate events, festivals, and community gatherings across Philadelphia. Submit a reservation request and we will respond within 24 hours with availability and pricing."}},
         {"@type":"Question","name":"Are you the same Los Potrillos as the restaurant in Port Richmond?","acceptedAnswer":{"@type":"Answer","text":"Yes — same family, same recipes, same brothers from Puebla. Our restaurant is at 2617 E Venango St, and our truck is at 4200 G St. Two locations, one kitchen tradition."}},
         {"@type":"Question","name":"Do you have vegetarian options?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our menu includes vegetarian-friendly tacos, quesadillas, and sides. View the full menu and order online to see all options."}},
         {"@type":"Question","name":"What are your hours?","acceptedAnswer":{"@type":"Answer","text":"Monday through Saturday, 10am to 9pm. Closed Sundays. Located at 4200 G Street, Philadelphia, PA 19124."}}
@@ -444,12 +421,16 @@
 
     <?php
     $faqs = [
-      ["q" => "How do I order from the truck?",                               "a" => "Easy. Click \"Order Now\" anywhere on this page to order through our online system, then pick up at the truck window. You can also walk up and order in person — but ordering ahead online means your food is ready faster. We accept cash and card."],
-      ["q" => "What makes your birria tacos different?",                       "a" => "Our birria is slow-cooked for 12 hours using a family recipe from Puebla, Mexico — the same recipe served at our Port Richmond restaurant. The tortillas are dipped in the consomé and crisped on the plancha. Nothing is pre-packaged. Nothing is rushed."],
-      ["q" => "Can I reserve the truck for my private event?",                 "a" => "Yes. We bring the truck to quinceañeras, weddings, birthdays, corporate events, festivals, and community gatherings across Philadelphia. Submit a reservation request and we'll respond within 24 hours with availability and pricing."],
-      ["q" => "Are you the same Los Potrillos as the restaurant in Port Richmond?", "a" => "Yes — same family, same recipes, same brothers from Puebla. Our restaurant is at 2617 E Venango St, and our truck is at 4200 G St. Two locations, one kitchen tradition."],
-      ["q" => "Do you have vegetarian options?",                               "a" => "Yes. Our menu includes vegetarian-friendly tacos, quesadillas, and sides. View the full menu and order online to see all options."],
-      ["q" => "What are your hours?",                                          "a" => "Monday through Saturday, 10am to 9pm. Closed Sundays. Located at 4200 G Street, Philadelphia, PA 19124."],
+      ["q" => "How do I order from the truck?",
+       "a" => "Easy. Click \"Order Now\" anywhere on this page to order through our online system, then pick up at the truck window. You can also walk up and order in person. We accept cash and card."],
+      ["q" => "What makes your birria tacos different?",
+       "a" => "Our birria is slow-cooked for 12 hours using a family recipe from Puebla, Mexico — the same recipe served at our Port Richmond restaurant. The tortillas are dipped in the consomé and crisped on the plancha. Nothing is pre-packaged. Nothing is rushed."],
+      ["q" => "Are you the same Los Potrillos as the restaurant in Port Richmond?",
+       "a" => "Yes — same family, same recipes, same brothers from Puebla. Our restaurant is at 2617 E Venango St, and our truck is at 4200 G St. Two locations, one kitchen tradition."],
+      ["q" => "Do you have vegetarian options?",
+       "a" => "Yes. Our menu includes vegetarian-friendly tacos, quesadillas, and sides. View the full menu and order online to see all options."],
+      ["q" => "What are your hours?",
+       "a" => "Monday through Saturday, 10am to 9pm. Closed Sundays. Located at 4200 G Street, Philadelphia, PA 19124."],
     ];
     ?>
 
@@ -474,20 +455,10 @@
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════════ -->
 <script>
-  // Scroll to #reserve
-  document.querySelectorAll('.js-scroll-reserve').forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault()
-      var target = document.querySelector('#reserve')
-      if (target) target.scrollIntoView({ behavior: 'smooth' })
-    })
-  })
-
   // FAQ Accordion
   document.querySelectorAll('.faq-trigger').forEach(function(btn) {
     btn.addEventListener('click', function() {

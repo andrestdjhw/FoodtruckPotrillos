@@ -11,4 +11,4 @@
     <div id="floating-cta-root"></div>
 
     <!-- Spacer para compensar el header fixed -->
-    <div class="h-28"></div>
+    <div class="h-16 sm:h-28"></div>

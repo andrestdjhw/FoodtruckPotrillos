@@ -625,7 +625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// ─── CONFIGURACIÓN — reemplazar con los datos reales ─────────────────────────
+// ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 
 const EMAILJS_SERVICE_ID = "service_xq04hfa";
 const EMAILJS_TEMPLATE_ID = "template_d208wk8";
@@ -633,26 +633,20 @@ const EMAILJS_PUBLIC_KEY = "Et9iu2dz4an-CfbAk";
 const RECAPTCHA_SITE_KEY = "6Lcext4sAAAAAFZJDqBEwDoOYfeo6oCUbP9x2NAC";
 // ─────────────────────────────────────────────────────────────────────────────
 
-const EVENT_TYPES = ["Quinceañera", "Wedding", "Birthday", "Corporate", "Festival", "Community", "Other"];
 const INITIAL_STATE = {
   fullName: "",
   phone: "",
   email: "",
-  eventDate: "",
-  eventLocation: "",
-  guestCount: "",
-  eventType: "",
+  subject: "",
   message: "",
-  honeypot: "" // spam trap — never shown to user
+  honeypot: ""
 };
 function ContactForm() {
   const [fields, setFields] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(INITIAL_STATE);
   const [errors, setErrors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
   const [captcha, setCaptcha] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [status, setStatus] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("idle"); // idle | loading | success | error
+  const [status, setStatus] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("idle");
   const recaptchaRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-  // ── Handlers ───────────────────────────────────────────────────────────────
   const handleChange = e => {
     const {
       name,
@@ -667,26 +661,17 @@ function ContactForm() {
       [name]: ""
     }));
   };
-
-  // ── Validation ─────────────────────────────────────────────────────────────
   const validate = () => {
     const e = {};
     if (!fields.fullName.trim()) e.fullName = "Full name is required.";
     if (!fields.phone.trim()) e.phone = "Phone number is required.";
     if (!fields.email.trim()) e.email = "Email is required.";else if (!/\S+@\S+\.\S+/.test(fields.email)) e.email = "Enter a valid email.";
-    if (!fields.eventDate) e.eventDate = "Event date is required.";
-    if (!fields.eventLocation.trim()) e.eventLocation = "Event location is required.";
-    if (!fields.guestCount) e.guestCount = "Estimated guests is required.";
-    if (!fields.eventType) e.eventType = "Please select an event type.";
+    if (!fields.message.trim()) e.message = "Please enter your message.";
     if (!captcha) e.captcha = "Please complete the reCAPTCHA.";
     return e;
   };
-
-  // ── Submit ─────────────────────────────────────────────────────────────────
   const handleSubmit = async e => {
     e.preventDefault();
-
-    // Honeypot check — if filled, silently bail
     if (fields.honeypot) return;
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -699,11 +684,8 @@ function ContactForm() {
         from_name: fields.fullName,
         from_phone: fields.phone,
         from_email: fields.email,
-        event_date: fields.eventDate,
-        event_location: fields.eventLocation,
-        guest_count: fields.guestCount,
-        event_type: fields.eventType,
-        message: fields.message || "No additional info provided."
+        subject: fields.subject || "General Inquiry",
+        message: fields.message
       }, EMAILJS_PUBLIC_KEY);
       setStatus("success");
       setFields(INITIAL_STATE);
@@ -714,8 +696,6 @@ function ContactForm() {
       setStatus("error");
     }
   };
-
-  // ── Success screen ─────────────────────────────────────────────────────────
   if (status === "success") {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "flex flex-col items-center justify-center py-10 text-center gap-4",
@@ -735,19 +715,17 @@ function ContactForm() {
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
         className: "text-lg font-black text-gray-900",
-        children: "Request Received!"
+        children: "Message Sent!"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "text-sm text-gray-500 max-w-xs",
-        children: "Thanks! We'll review your event details and get back to you within 24 hours."
+        children: "Thanks for reaching out! We'll get back to you within 24 hours."
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         onClick: () => setStatus("idle"),
         className: "mt-2 text-xs font-semibold text-[#c0392b] hover:underline",
-        children: "Submit another request"
+        children: "Send another message"
       })]
     });
   }
-
-  // ── Form ───────────────────────────────────────────────────────────────────
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
     onSubmit: handleSubmit,
     noValidate: true,
@@ -824,102 +802,39 @@ function ContactForm() {
           children: errors.email
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex flex-col gap-1",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-          className: "text-xs font-bold text-gray-700 uppercase tracking-wide",
-          children: ["Event Date ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "text-[#c0392b]",
-            children: "*"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "date",
-          name: "eventDate",
-          value: fields.eventDate,
-          onChange: handleChange,
-          min: new Date().toISOString().split("T")[0],
-          className: `border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] ${errors.eventDate ? "border-red-400 bg-red-50" : "border-gray-300"}`
-        }), errors.eventDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-xs text-red-500",
-          children: errors.eventDate
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex flex-col gap-1",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-          className: "text-xs font-bold text-gray-700 uppercase tracking-wide",
-          children: ["Event Type ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "text-[#c0392b]",
-            children: "*"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          name: "eventType",
-          value: fields.eventType,
-          onChange: handleChange,
-          className: `border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] bg-white ${errors.eventType ? "border-red-400 bg-red-50" : "border-gray-300"}`,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: "",
-            children: "Select event type..."
-          }), EVENT_TYPES.map(type => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            value: type,
-            children: type
-          }, type))]
-        }), errors.eventType && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-xs text-red-500",
-          children: errors.eventType
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "flex flex-col gap-1 sm:col-span-2",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
           className: "text-xs font-bold text-gray-700 uppercase tracking-wide",
-          children: ["Event Location / Address ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "text-[#c0392b]",
-            children: "*"
+          children: ["Subject ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            className: "text-gray-400 font-normal normal-case",
+            children: "(optional)"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
           type: "text",
-          name: "eventLocation",
-          value: fields.eventLocation,
+          name: "subject",
+          value: fields.subject,
           onChange: handleChange,
-          placeholder: "1234 Main St, Philadelphia, PA",
-          className: `border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] ${errors.eventLocation ? "border-red-400 bg-red-50" : "border-gray-300"}`
-        }), errors.eventLocation && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-xs text-red-500",
-          children: errors.eventLocation
+          placeholder: "What's this about?",
+          className: "border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b]"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "flex flex-col gap-1 sm:col-span-2",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
           className: "text-xs font-bold text-gray-700 uppercase tracking-wide",
-          children: ["Estimated Number of Guests ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: ["Message ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "text-[#c0392b]",
             children: "*"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "number",
-          name: "guestCount",
-          value: fields.guestCount,
-          onChange: handleChange,
-          placeholder: "150",
-          min: "1",
-          className: `border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] ${errors.guestCount ? "border-red-400 bg-red-50" : "border-gray-300"}`
-        }), errors.guestCount && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-xs text-red-500",
-          children: errors.guestCount
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex flex-col gap-1 sm:col-span-2",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-          className: "text-xs font-bold text-gray-700 uppercase tracking-wide",
-          children: ["Tell us about your event ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "text-gray-400 font-normal normal-case",
-            children: "(optional)"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
           name: "message",
           value: fields.message,
           onChange: handleChange,
-          rows: "3",
-          placeholder: "Any details about your event, special requests, or questions...",
-          className: "border border-gray-300 rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] resize-none"
+          rows: "4",
+          placeholder: "How can we help you?",
+          className: `border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:border-[#c0392b] resize-none ${errors.message ? "border-red-400 bg-red-50" : "border-gray-300"}`
+        }), errors.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          className: "text-xs text-red-500",
+          children: errors.message
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -943,13 +858,13 @@ function ContactForm() {
       className: "mb-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "text-xs text-red-600 font-semibold",
-        children: "Something went wrong. Please try again or contact us via WhatsApp."
+        children: "Something went wrong. Please try again or reach us via WhatsApp."
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       type: "submit",
       disabled: status === "loading",
       className: "w-full bg-[#c0392b] hover:bg-[#a93226] disabled:opacity-60 disabled:cursor-not-allowed text-white font-black text-sm px-8 py-3.5 rounded-full transition-colors shadow-sm",
-      children: status === "loading" ? "Sending..." : "REQUEST AVAILABILITY →"
+      children: status === "loading" ? "Sending..." : "SEND MESSAGE →"
     })]
   });
 }
@@ -1013,18 +928,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/";
+const DELIVERY_APPS = [{
+  label: "Order Pickup",
+  href: POS_URL,
+  gradient: "from-[#c0392b] to-[#922b21]",
+  border: "border-[#c0392b]/50",
+  icon:
+  /*#__PURE__*/
+  // Fork and knife icon
+  (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "w-8 h-8 text-white",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"
+    })
+  })
+}, {
+  label: "Uber Eats",
+  href: "https://www.ubereats.com/store/los-potrillos-food-truck/fB6ez1DxQW6AytoOpy1fKg?diningMode=PICKUP&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjQlMjBWZW50dXJlJTIyJTJDJTIycmVmZXJlbmNlJTIyJTNBJTIyYWQ1MDJkMmQtMzdmMC0xYzlkLWJhODgtY2UxMzY5ZmI5MzM3JTIyJTJDJTIycmVmZXJlbmNlVHlwZSUyMiUzQSUyMnViZXJfcGxhY2VzJTIyJTJDJTIybGF0aXR1ZGUlMjIlM0EzMy42NTkwODIlMkMlMjJsb25naXR1ZGUlMjIlM0EtMTE3Ljc1MjQyNiU3RA%3D%3D&rwg_token=AFd1xnFfG_3axEf4FxmOgsDRDyDS_i7oXyfc_dkZ90M2bHzovEv9Tp1gk6vZqE9rQghtZ-D5E5LC6Ls4uDEVYB7vzlycEU46Ew%3D%3D&utm_campaign=CM2508147-search-free-nonbrand-google-pas_e_all_acq_Global&utm_medium=search-free-nonbrand&utm_source=google-pas",
+  gradient: "from-[#06C167] to-[#038a47]",
+  border: "border-[#06C167]/50",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+    src: "https://cdn.simpleicons.org/ubereats/white",
+    alt: "Uber Eats",
+    className: "w-8 h-8 object-contain"
+  })
+}, {
+  label: "DoorDash",
+  href: "https://www.doordash.com/store/los-potrillos-restaurant-food-truck-philadelphia-842516/1198297/?pickup=true&rwg_token=AFd1xnGuYRY_WjUsJ07zPTnXscCUAo2l-cSGhnRjDckfvWBvDiYrl-I3uTuXFn_Eky7PmjKMLQ7BLEYv8ZfrwsVfgCUGS5FnZw==&utm_campaign=gpa",
+  gradient: "from-[#FF3008] to-[#cc2606]",
+  border: "border-[#FF3008]/50",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+    src: "https://cdn.simpleicons.org/doordash/white",
+    alt: "DoorDash",
+    className: "w-8 h-8 object-contain"
+  })
+}, {
+  label: "Grubhub",
+  href: "https://www.grubhub.com/restaurant/los-potrillos-food-truck-4200-g-st-philadelphia/4890216?utm_source=grubhub_web&utm_medium=content_owned&utm_campaign=menushare&utm_content=share-link",
+  gradient: "from-[#F63440] to-[#c4101b]",
+  border: "border-[#F63440]/50",
+  icon:
+  /*#__PURE__*/
+  // Grubhub "G" wordmark-style icon
+  (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    className: "w-8 h-8 text-white",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7 3.134-7 7-7zm1 3.5h-2.5A3.5 3.5 0 007 12a3.5 3.5 0 003.5 3.5H13a.5.5 0 00.5-.5v-3H11v1.5h1v.5h-.5A2 2 0 019 12a2 2 0 012-2h2V8.5z"
+    })
+  })
+}];
 function FloatingCTA() {
   const [visible, setVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [dismissed, setDismissed] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-
-  // Show after 3 seconds, hide if user dismissed this session
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (dismissed) return;
     const timer = setTimeout(() => setVisible(true), 3000);
     return () => clearTimeout(timer);
   }, [dismissed]);
-
-  // Also hide when user scrolls back to top (near hero)
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const onScroll = () => {
       if (window.scrollY < 100) setVisible(false);else if (!dismissed) setVisible(true);
@@ -1035,54 +999,85 @@ function FloatingCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [dismissed]);
   if (dismissed) return null;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    style: {
-      zIndex: 1200
-    },
-    className: `fixed bottom-6 left-1/2 -translate-x-1/2 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"}`,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "flex items-center gap-3 bg-[#1a1a1a] text-white rounded-full shadow-2xl pl-2 pr-2 py-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png",
-          alt: "Los Potrillos",
-          className: "w-7 h-7 object-contain"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "pr-1",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "text-xs font-black leading-tight whitespace-nowrap",
-          children: "Los Potrillos Food Truck"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "text-xs text-gray-400 leading-tight whitespace-nowrap",
-          children: "Order online. Pick up in minutes."
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-        href: POS_URL,
-        className: "bg-[#c0392b] hover:bg-[#a93226] text-white font-black text-xs px-4 py-2.5 rounded-full transition-colors whitespace-nowrap shrink-0",
-        children: "Order Now"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-        onClick: () => {
-          setDismissed(true);
-          setVisible(false);
-        },
-        "aria-label": "Dismiss",
-        className: "w-6 h-6 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-gray-700 transition-colors shrink-0 mr-1",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-          className: "w-3.5 h-3.5",
-          fill: "none",
-          stroke: "currentColor",
-          strokeWidth: "2.5",
-          viewBox: "0 0 24 24",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+      width: "0",
+      height: "0",
+      style: {
+        position: "absolute"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
+          id: "squircleClip",
+          clipPathUnits: "objectBoundingBox",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-            strokeLinecap: "round",
-            strokeLinejoin: "round",
-            d: "M6 18L18 6M6 6l12 12"
+            d: "M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
           })
         })
-      })]
-    })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        zIndex: 1200
+      },
+      className: `fixed bottom-6 left-1/2 -translate-x-1/2 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"}`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "relative",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "absolute inset-0 bg-black/60 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "relative flex items-end gap-x-2 p-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            style: {
+              clipPath: "url(#squircleClip)"
+            },
+            className: "w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              src: "/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png",
+              alt: "Los Potrillos",
+              className: "w-9 h-9 object-contain"
+            })
+          }), DELIVERY_APPS.map(({
+            label,
+            href,
+            gradient,
+            border,
+            icon
+          }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: href,
+            target: "_blank",
+            rel: "noopener noreferrer",
+            "aria-label": label,
+            title: label,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              style: {
+                clipPath: "url(#squircleClip)"
+              },
+              className: `w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center shadow-lg border ${border} cursor-pointer transform transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-2 hover:shadow-2xl`,
+              children: icon
+            })
+          }, label)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            onClick: () => {
+              setDismissed(true);
+              setVisible(false);
+            },
+            "aria-label": "Dismiss",
+            className: "w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors shrink-0 ml-1",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2.5",
+              viewBox: "0 0 24 24",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                d: "M6 18L18 6M6 6l12 12"
+              })
+            })
+          })]
+        })]
+      })
+    })]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingCTA);
@@ -1109,13 +1104,6 @@ __webpack_require__.r(__webpack_exports__);
 const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/";
 const RESTAURANT_URL = "https://restaurant.restaurantpotrillos.com/";
 function Footer() {
-  const handleReserve = e => {
-    e.preventDefault();
-    const target = document.querySelector("#reserve");
-    if (target) target.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
       className: "bg-stone-50 border-t border-stone-200 py-10",
@@ -1155,11 +1143,9 @@ function Footer() {
       className: "bg-[#c0392b] py-16 px-4",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "max-w-4xl mx-auto text-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
           className: "text-3xl sm:text-4xl font-black text-white mb-8 leading-tight",
-          children: ["Hungry Yet? Order Now \u2014", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {
-            className: "hidden sm:block"
-          }), "Or Reserve the Truck for Your Next Event."]
+          children: "Hungry Yet? Come Find Us at 4200 G Street."
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "flex flex-col sm:flex-row items-center justify-center gap-4",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -1168,9 +1154,8 @@ function Footer() {
             children: "ORDER NOW \u2192"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "/contact",
-            onClick: handleReserve,
             className: "w-full sm:w-auto bg-transparent border-2 border-white text-white font-black text-sm px-8 py-3.5 rounded-full hover:bg-white hover:text-[#c0392b] transition-colors",
-            children: "RESERVE THE TRUCK \u2192"
+            children: "GET IN TOUCH \u2192"
           })]
         })]
       })
@@ -1220,6 +1205,12 @@ function Footer() {
                   className: "hover:text-white transition-colors",
                   children: "(267) 596-6092"
                 })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                  href: "mailto:info@restaurantpotrillos.com",
+                  className: "hover:text-white transition-colors",
+                  children: "info@restaurantpotrillos.com"
+                })
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -1233,13 +1224,6 @@ function Footer() {
                   href: POS_URL,
                   className: "hover:text-white transition-colors",
                   children: "Menu (Order Online)"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                  href: "#reserve",
-                  onClick: handleReserve,
-                  className: "hover:text-white transition-colors",
-                  children: "Reserve the Truck"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
@@ -1334,16 +1318,8 @@ function Footer() {
               children: "Order Online"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
               href: POS_URL,
-              className: "inline-block text-sm font-bold text-[#c0392b] hover:text-white transition-colors mb-4",
-              children: "Order Now \u2192"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-              className: "text-xs font-bold tracking-widest text-white uppercase mb-2",
-              children: "Reserve the Truck"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: "#reserve",
-              onClick: handleReserve,
               className: "inline-block text-sm font-bold text-[#c0392b] hover:text-white transition-colors",
-              children: "Request Availability \u2192"
+              children: "Order Now \u2192"
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -1423,158 +1399,257 @@ function Navbar() {
     label: "Contact",
     href: "/contact"
   }];
-  const handleReserve = e => {
-    e.preventDefault();
-    setMenuOpen(false);
-    window.location.href = "/contact";
-  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("header", {
     style: {
       zIndex: 1100
     },
     className: `fixed top-0 left-0 w-full transition-all duration-300 ${isScrolled ? "shadow-xl" : ""}`,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: `bg-[#1a1a1a] text-gray-300 text-xs transition-all duration-300 overflow-hidden ${isScrolled ? "max-h-0 py-0" : "max-h-12 py-2"}`,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "max-w-7xl mx-auto px-4 grid grid-cols-3 items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "flex items-center gap-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-            href: "tel:+12675966092",
-            className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-              className: "w-3.5 h-3.5 shrink-0",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              viewBox: "0 0 24 24",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                d: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              })
-            }), "(267) 596-6092"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-            href: "mailto:info@restaurantpotrillos.com",
-            className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-              className: "w-3.5 h-3.5 shrink-0",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              viewBox: "0 0 24 24",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-              })
-            }), "info@restaurantpotrillos.com"]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "flex justify-center items-center gap-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-            href: "https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              className: "w-3.5 h-3.5 shrink-0",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              viewBox: "0 0 24 24",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              })]
-            }), "4200 G St, Philadelphia, PA"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "flex items-center gap-1.5",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              className: "w-3.5 h-3.5 shrink-0",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              viewBox: "0 0 24 24",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-                cx: "12",
-                cy: "12",
-                r: "10"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                strokeLinecap: "round",
-                d: "M12 6v6l4 2"
-              })]
-            }), "Mon\u2013Sat 10am \u2013 9pm"]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "flex items-center justify-end gap-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "https://www.facebook.com/lospotrillosrestaurantphilly",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "hover:text-[#e8a020] transition-colors",
-            "aria-label": "Facebook",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-              className: "w-4 h-4",
-              fill: "currentColor",
-              viewBox: "0 0 24 24",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "https://www.instagram.com/potrillosrestaurantphilly/",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "hover:text-[#e8a020] transition-colors",
-            "aria-label": "Instagram",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              className: "w-4 h-4",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              viewBox: "0 0 24 24",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
-                x: "2",
-                y: "2",
-                width: "20",
-                height: "20",
-                rx: "5",
-                ry: "5"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-                cx: "12",
-                cy: "12",
-                r: "4"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-                cx: "17.5",
-                cy: "6.5",
-                r: "0.5",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: `bg-[#1a1a1a] text-gray-300 text-xs transition-all duration-300 overflow-hidden ${isScrolled ? "max-h-0 py-0" : ""}`,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: `sm:hidden transition-all duration-300 ${isScrolled ? "max-h-0" : "max-h-20"} overflow-hidden`,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex flex-col items-center gap-1 py-2 px-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "flex items-center gap-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.facebook.com/lospotrillosrestaurantphilly",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "Facebook",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3.5 h-3.5",
                 fill: "currentColor",
-                stroke: "none"
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "https://www.tiktok.com/@lospotrillosrestaurant",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "hover:text-[#e8a020] transition-colors",
-            "aria-label": "TikTok",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-              className: "w-4 h-4",
-              fill: "currentColor",
-              viewBox: "0 0 24 24",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                })
               })
-            })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.instagram.com/potrillosrestaurantphilly/",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "Instagram",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+                className: "w-3.5 h-3.5",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+                  x: "2",
+                  y: "2",
+                  width: "20",
+                  height: "20",
+                  rx: "5",
+                  ry: "5"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                  cx: "12",
+                  cy: "12",
+                  r: "4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                  cx: "17.5",
+                  cy: "6.5",
+                  r: "0.5",
+                  fill: "currentColor",
+                  stroke: "none"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.tiktok.com/@lospotrillosrestaurant",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "TikTok",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3.5 h-3.5",
+                fill: "currentColor",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  d: "M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"
+                })
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "flex items-center gap-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: "tel:+12675966092",
+              className: "flex items-center gap-1 hover:text-[#e8a020] transition-colors",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3 h-3 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                })
+              }), "(267) 596-6092"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: "mailto:info@restaurantpotrillos.com",
+              className: "flex items-center gap-1 hover:text-[#e8a020] transition-colors",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3 h-3 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                })
+              }), "info@restaurantpotrillos.com"]
+            })]
           })]
-        })]
-      })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: `hidden sm:block transition-all duration-300 ${isScrolled ? "max-h-0 py-0" : "max-h-12 py-2"} overflow-hidden`,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "max-w-7xl mx-auto px-4 grid grid-cols-3 items-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "flex items-center gap-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: "tel:+12675966092",
+              className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3.5 h-3.5 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                })
+              }), "(267) 596-6092"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: "mailto:info@restaurantpotrillos.com",
+              className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-3.5 h-3.5 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                })
+              }), "info@restaurantpotrillos.com"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "flex justify-center items-center gap-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+              href: "https://maps.google.com/?q=4200+G+St,+Philadelphia,+PA",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "flex items-center gap-1.5 hover:text-[#e8a020] transition-colors",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+                className: "w-3.5 h-3.5 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                })]
+              }), "4200 G St, Philadelphia, PA"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+              className: "flex items-center gap-1.5",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+                className: "w-3.5 h-3.5 shrink-0",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                  cx: "12",
+                  cy: "12",
+                  r: "10"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  strokeLinecap: "round",
+                  d: "M12 6v6l4 2"
+                })]
+              }), "Mon\u2013Sat 10am \u2013 9pm"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "flex items-center justify-end gap-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.facebook.com/lospotrillosrestaurantphilly",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "Facebook",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-4 h-4",
+                fill: "currentColor",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.instagram.com/potrillosrestaurantphilly/",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "Instagram",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+                className: "w-4 h-4",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                viewBox: "0 0 24 24",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+                  x: "2",
+                  y: "2",
+                  width: "20",
+                  height: "20",
+                  rx: "5",
+                  ry: "5"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                  cx: "12",
+                  cy: "12",
+                  r: "4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+                  cx: "17.5",
+                  cy: "6.5",
+                  r: "0.5",
+                  fill: "currentColor",
+                  stroke: "none"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "https://www.tiktok.com/@lospotrillosrestaurant",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className: "hover:text-[#e8a020] transition-colors",
+              "aria-label": "TikTok",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+                className: "w-4 h-4",
+                fill: "currentColor",
+                viewBox: "0 0 24 24",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+                  d: "M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"
+                })
+              })
+            })]
+          })]
+        })
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
       className: `bg-white border-b border-gray-100 transition-all duration-300 ${isScrolled ? "py-2" : "py-3"}`,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -1620,29 +1695,19 @@ function Navbar() {
               children: label
             })
           }, label))
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "hidden lg:flex items-center gap-2 shrink-0",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "hidden lg:flex items-center shrink-0",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: POS_URL,
             className: "bg-[#c0392b] hover:bg-[#a93226] text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-sm",
             children: "ORDER NOW"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "/contact",
-            onClick: handleReserve,
-            className: "border-2 border-[#c0392b] text-[#c0392b] hover:bg-[#c0392b] hover:text-white text-sm font-bold px-5 py-2 rounded-full transition-colors",
-            children: "RESERVE THE TRUCK"
-          })]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "flex lg:hidden items-center gap-2",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: POS_URL,
             className: "bg-[#c0392b] hover:bg-[#a93226] text-white text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap",
             children: "ORDER NOW"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: "/contact",
-            onClick: handleReserve,
-            className: "border-2 border-[#c0392b] text-[#c0392b] text-xs font-bold px-3 py-2 rounded-full transition-colors whitespace-nowrap hidden sm:inline-flex",
-            children: "RESERVE"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             onClick: () => setMenuOpen(prev => !prev),
             "aria-label": "Toggle menu",
@@ -1668,9 +1733,9 @@ function Navbar() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: `lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-96 border-t border-gray-100" : "max-h-0"}`,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
           className: "flex flex-col px-4 py-3 gap-1 text-sm font-semibold text-gray-700 bg-white",
-          children: [navLinks.map(({
+          children: navLinks.map(({
             label,
             href
           }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -1680,15 +1745,7 @@ function Navbar() {
               className: "block px-3 py-2.5 rounded hover:text-[#c0392b] hover:bg-red-50 transition-colors",
               children: label
             })
-          }, label)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-            className: "sm:hidden pt-1",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: "/contact",
-              onClick: handleReserve,
-              className: "flex justify-center border-2 border-[#c0392b] text-[#c0392b] font-bold px-4 py-2 rounded-full transition-colors",
-              children: "RESERVE THE TRUCK"
-            })
-          })]
+          }, label))
         })
       })]
     })]

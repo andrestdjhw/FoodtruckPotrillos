@@ -1,15 +1,9 @@
 import React from "react"
 
-const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/"
+const POS_URL        = "https://los-potrillos-food-truck.cloveronline.com/"
 const RESTAURANT_URL = "https://restaurant.restaurantpotrillos.com/"
 
 function Footer() {
-  const handleReserve = (e) => {
-    e.preventDefault()
-    const target = document.querySelector("#reserve")
-    if (target) target.scrollIntoView({ behavior: "smooth" })
-  }
-
   return (
     <>
       {/* ══════════════════════════════════════════
@@ -19,7 +13,6 @@ function Footer() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
 
-            {/* Image */}
             <div className="w-full sm:w-48 sm:shrink-0 rounded-xl overflow-hidden shadow-sm">
               <img
                 src="/wp-content/uploads/2026/05/FoodTruck-scaled-1.jpg"
@@ -28,7 +21,6 @@ function Footer() {
               />
             </div>
 
-            {/* Text */}
             <div className="text-center sm:text-left">
               <p className="text-xs font-bold tracking-widest text-[#c0392b] uppercase mb-1">
                 Also visit our restaurant
@@ -59,8 +51,7 @@ function Footer() {
       <section className="bg-[#c0392b] py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-8 leading-tight">
-            Hungry Yet? Order Now —<br className="hidden sm:block" />
-            Or Reserve the Truck for Your Next Event.
+            Hungry Yet? Come Find Us at 4200 G Street.
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -71,10 +62,9 @@ function Footer() {
             </a>
             <a
               href="/contact"
-              onClick={handleReserve}
               className="w-full sm:w-auto bg-transparent border-2 border-white text-white font-black text-sm px-8 py-3.5 rounded-full hover:bg-white hover:text-[#c0392b] transition-colors"
             >
-              RESERVE THE TRUCK →
+              GET IN TOUCH →
             </a>
           </div>
         </div>
@@ -86,7 +76,6 @@ function Footer() {
       <footer className="bg-[#111111] text-gray-400 pt-14 pb-6">
         <div className="max-w-7xl mx-auto px-4">
 
-          {/* 4-column grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
             {/* COL 1 — Brand */}
@@ -126,6 +115,11 @@ function Footer() {
                     (267) 596-6092
                   </a>
                 </li>
+                <li>
+                  <a href="mailto:info@restaurantpotrillos.com" className="hover:text-white transition-colors">
+                    info@restaurantpotrillos.com
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -138,11 +132,6 @@ function Footer() {
                 <li>
                   <a href={POS_URL} className="hover:text-white transition-colors">
                     Menu (Order Online)
-                  </a>
-                </li>
-                <li>
-                  <a href="#reserve" onClick={handleReserve} className="hover:text-white transition-colors">
-                    Reserve the Truck
                   </a>
                 </li>
                 <li>
@@ -165,7 +154,6 @@ function Footer() {
                 Follow Us
               </h4>
 
-              {/* Social Icons */}
               <div className="flex items-center gap-4 mb-6">
                 <a href="https://www.instagram.com/potrillosrestaurantphilly/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -187,13 +175,8 @@ function Footer() {
               </div>
 
               <p className="text-xs font-bold tracking-widest text-white uppercase mb-2">Order Online</p>
-              <a href={POS_URL} className="inline-block text-sm font-bold text-[#c0392b] hover:text-white transition-colors mb-4">
+              <a href={POS_URL} className="inline-block text-sm font-bold text-[#c0392b] hover:text-white transition-colors">
                 Order Now →
-              </a>
-
-              <p className="text-xs font-bold tracking-widest text-white uppercase mb-2">Reserve the Truck</p>
-              <a href="#reserve" onClick={handleReserve} className="inline-block text-sm font-bold text-[#c0392b] hover:text-white transition-colors">
-                Request Availability →
               </a>
             </div>
 

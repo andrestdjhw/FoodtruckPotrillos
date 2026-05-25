@@ -5,28 +5,23 @@
 
 get_header(); ?>
 
-<!-- ══════════════════════════════════════════════
-     CONTACT HERO
-════════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="bg-[#0f0f0f] pt-32 pb-16">
   <div class="max-w-4xl mx-auto px-4 text-center">
     <p class="text-xs font-bold tracking-widest text-[#e8a020] uppercase mb-3">
       Get in Touch
     </p>
     <h1 class="text-3xl sm:text-4xl font-black text-white mb-4 leading-tight">
-      Reserve the Truck or Send Us a Message
+      We'd Love to Hear from You
     </h1>
     <p class="text-sm text-gray-400 leading-relaxed max-w-xl mx-auto">
-      Fill out the form below and we'll get back to you within 24 hours.
-      You can also reach us by phone or WhatsApp.
+      Have a question about our menu, our location, or anything else?
+      Send us a message and we'll get back to you within 24 hours.
     </p>
   </div>
 </section>
 
-
-<!-- ══════════════════════════════════════════════
-     CONTACT BODY — Form + Info
-════════════════════════════════════════════════ -->
+<!-- CONTACT BODY -->
 <section class="bg-stone-50 py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
@@ -53,6 +48,21 @@ get_header(); ?>
             </div>
           </li>
 
+          <!-- Email -->
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0 text-[#c0392b]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-0.5">Email</p>
+              <a href="mailto:info@restaurantpotrillos.com" class="text-sm font-semibold text-gray-900 hover:text-[#c0392b] transition-colors">
+                info@restaurantpotrillos.com
+              </a>
+            </div>
+          </li>
+
           <!-- WhatsApp -->
           <li class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0 text-green-600">
@@ -70,21 +80,6 @@ get_header(); ?>
                 class="text-sm font-semibold text-gray-900 hover:text-green-600 transition-colors"
               >
                 Message us on WhatsApp →
-              </a>
-            </div>
-          </li>
-
-          <!-- Email -->
-          <li class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0 text-[#c0392b]">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-0.5">Email</p>
-              <a href="mailto:info@restaurantpotrillos.com" class="text-sm font-semibold text-gray-900 hover:text-[#c0392b] transition-colors">
-                info@restaurantpotrillos.com
               </a>
             </div>
           </li>
@@ -132,12 +127,9 @@ get_header(); ?>
       <!-- RIGHT — React Form -->
       <div class="w-full lg:w-7/12">
         <div class="bg-white rounded-2xl shadow-xl p-8">
-          <h2 class="text-xl font-black text-gray-900 mb-1">Check Truck Availability for Your Event</h2>
-          <p class="text-xs text-gray-400 mb-6">We respond within 24 hours. No spam. No obligation.</p>
-
-          <!-- ContactForm React component mounts here -->
+          <h2 class="text-xl font-black text-gray-900 mb-1">Send Us a Message</h2>
+          <p class="text-xs text-gray-400 mb-6">We'll get back to you within 24 hours.</p>
           <div id="contact-form-root"></div>
-
         </div>
       </div>
 
