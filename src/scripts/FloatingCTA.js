@@ -86,16 +86,24 @@ function FloatingCTA() {
           <div className="relative flex items-end gap-x-2 p-2">
 
             {/* Logo */}
-            <div
-              style={{ clipPath: "url(#squircleClip)" }}
-              className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0"
+            <a
+              href="https://share.google/ZJrutDPtyilmuAzQX"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Los Potrillos"
+              title="Los Potrillos"
             >
-              <img
-                src="/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png"
-                alt="Los Potrillos"
-                className="w-9 h-9 object-contain"
-              />
-            </div>
+              <div
+                style={{ clipPath: "url(#squircleClip)" }}
+                className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0 cursor-pointer transform transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-2 hover:shadow-2xl"
+              >
+                <img
+                  src="/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png"
+                  alt="Los Potrillos"
+                  className="w-9 h-9 object-contain"
+                />
+              </div>
+            </a>
 
             {/* App buttons */}
             {DELIVERY_APPS.map(({ label, href, gradient, border, icon }) => (

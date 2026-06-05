@@ -1026,15 +1026,22 @@ function FloatingCTA() {
           className: "absolute inset-0 bg-black/60 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "relative flex items-end gap-x-2 p-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            style: {
-              clipPath: "url(#squircleClip)"
-            },
-            className: "w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-              src: "/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png",
-              alt: "Los Potrillos",
-              className: "w-9 h-9 object-contain"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: "https://share.google/ZJrutDPtyilmuAzQX",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            "aria-label": "Los Potrillos",
+            title: "Los Potrillos",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              style: {
+                clipPath: "url(#squircleClip)"
+              },
+              className: "w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0 cursor-pointer transform transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-2 hover:shadow-2xl",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                src: "/wp-content/uploads/2026/05/Horses-_WB-Photoroom.png",
+                alt: "Los Potrillos",
+                className: "w-9 h-9 object-contain"
+              })
             })
           }), DELIVERY_APPS.map(({
             label,
