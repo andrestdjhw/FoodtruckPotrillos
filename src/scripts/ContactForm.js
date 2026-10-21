@@ -79,7 +79,7 @@ function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center py-10 text-center gap-4">
+      <div id="contact-form-success" className="flex flex-col items-center justify-center py-10 text-center gap-4">
         <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
           <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
