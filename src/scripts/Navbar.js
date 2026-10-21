@@ -4,10 +4,23 @@ const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/"
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [hideTopbar, setHideTopbar] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 200)
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setIsScrolled(y > 200)
+      if (y <= 200) {
+        setHideTopbar(false)          // cerca del top: siempre visible
+      } else if (y > lastY + 5) {
+        setHideTopbar(true)           // scroll down: ocultar
+      } else if (y < lastY - 5) {
+        setHideTopbar(false)          // scroll up: mostrar
+      }
+      lastY = y
+    }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
@@ -29,10 +42,10 @@ function Navbar() {
     <header style={{ zIndex: 1100 }} className={`fixed top-0 left-0 w-full transition-all duration-300 ${isScrolled ? "shadow-xl" : ""}`}>
 
       {/* ── TOP UTILITY BAR ── */}
-      <div className={`bg-[#1a1a1a] text-gray-300 text-xs transition-all duration-300 overflow-hidden ${isScrolled ? "max-h-0 py-0" : ""}`}>
+      <div className={`bg-[#1a1a1a] text-gray-300 text-xs transition-all duration-300 overflow-hidden ${hideTopbar ? "max-h-0 py-0" : ""}`}>
 
         {/* MOBILE version — stacked: social icons + phone/email */}
-        <div className={`sm:hidden transition-all duration-300 ${isScrolled ? "max-h-0" : "max-h-20"} overflow-hidden`}>
+        <div className={`sm:hidden transition-all duration-300 ${hideTopbar ? "max-h-0" : "max-h-20"} overflow-hidden`}>
           <div className="flex flex-col items-center gap-1 py-2 px-4">
             {/* Row 1 — Social icons */}
             <div className="flex items-center gap-4">
@@ -73,7 +86,7 @@ function Navbar() {
         </div>
 
         {/* DESKTOP version — single row grid */}
-        <div className={`hidden sm:block transition-all duration-300 ${isScrolled ? "max-h-0 py-0" : "max-h-12 py-2"} overflow-hidden`}>
+        <div className={`hidden sm:block transition-all duration-300 ${hideTopbar ? "max-h-0 py-0" : "max-h-12 py-2"} overflow-hidden`}>
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center">
 
             {/* LEFT — Phone + Email */}
