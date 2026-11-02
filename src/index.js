@@ -6,6 +6,7 @@ import Navbar from "./scripts/Navbar"
 import Footer from "./scripts/Footer"
 import ContactForm from "./scripts/ContactForm"
 import FloatingCTA from "./scripts/FloatingCTA"
+import CookieBanner from "./scripts/CookieBanner"
 
 const person1 = new Person("Brad")
 
@@ -38,4 +39,9 @@ if (document.querySelector("#contact-form-root")) {
 if (document.querySelector("#floating-cta-root")) {
   const root = ReactDOM.createRoot(document.querySelector("#floating-cta-root"))
   root.render(<FloatingCTA />)
+}
+
+if (document.querySelector("#lp-notice-root")) {
+  const root = ReactDOM.createRoot(document.querySelector("#lp-notice-root"))
+  root.render(<CookieBanner />)
 }

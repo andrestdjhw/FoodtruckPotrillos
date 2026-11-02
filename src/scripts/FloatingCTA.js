@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { readConsent, CONSENT_EVENT } from "./CookieBanner"
 
 const POS_URL = "https://los-potrillos-food-truck.cloveronline.com/"
 
@@ -46,21 +47,31 @@ const DELIVERY_APPS = [
 function FloatingCTA() {
   const [visible,   setVisible]   = useState(false)
   const [dismissed, setDismissed] = useState(false)
+  // Wait for the cookie banner to be answered so the two don't overlap
+  const [consented, setConsented] = useState(() => !!readConsent())
 
   useEffect(() => {
-    if (dismissed) return
+    if (consented) return
+    const onConsent = () => setConsented(true)
+    window.addEventListener(CONSENT_EVENT, onConsent)
+    return () => window.removeEventListener(CONSENT_EVENT, onConsent)
+  }, [consented])
+
+  useEffect(() => {
+    if (dismissed || !consented) return
     const timer = setTimeout(() => setVisible(true), 3000)
     return () => clearTimeout(timer)
-  }, [dismissed])
+  }, [dismissed, consented])
 
   useEffect(() => {
+    if (!consented) return
     const onScroll = () => {
       if (window.scrollY < 100) setVisible(false)
       else if (!dismissed)      setVisible(true)
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [dismissed])
+  }, [dismissed, consented])
 
   if (dismissed) return null
 

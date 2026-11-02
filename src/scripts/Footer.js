@@ -1,4 +1,5 @@
 import React from "react"
+import { openCookieSettings } from "./CookieBanner"
 
 const POS_URL        = "https://los-potrillos-food-truck.cloveronline.com/"
 const RESTAURANT_URL = "https://restaurant.restaurantpotrillos.com/"
@@ -185,9 +186,10 @@ function Footer() {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
             <span>© 2026 Los Potrillos Restaurant Inc. All rights reserved.</span>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
               <a href="/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
               <a href="/terms-conditions" className="hover:text-gray-400 transition-colors">Terms &amp; Conditions</a>
+              <button type="button" onClick={openCookieSettings} className="hover:text-gray-400 transition-colors">Cookie Settings</button>
               <a href="/sitemap" className="hover:text-gray-400 transition-colors">Site Map</a>
             </div>
           </div>
